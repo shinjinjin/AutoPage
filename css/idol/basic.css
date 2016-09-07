@@ -1,0 +1,117 @@
+@charset "utf-8";
+/* design by showhau */
+/*----------抬頭地方要加-----------------------------
+<meta name="Robots" content="All" />
+<meta name="Author" content="showhau,hau,dpi" />
+<meta name="keywords" content="showhau, hau, design, dpi, web, web design" />
+-----------------------------------------------------*/
+/*----------消虛線---------*/
+a {noFocusLine:expression(this.onFocus=this.blur())}      /* For IE, onFocus 的 F 要大寫*/
+:focus {-moz-outline-style: none}                         /* For Firefox */
+
+::selection {
+	background:rgb(102, 102, 102); /* Safari */
+	color:#fff;
+}
+::-moz-selection {
+	background:rgb(102, 102, 102); /* Firefox */
+	color:#fff;
+}
+/*
+::-webkit-input-placeholder {
+	background:#f9924d;
+    color: #fff;
+}
+:-moz-placeholder {
+   color: #333;
+}
+:-ms-input-placeholder {
+   color: #333;
+}
+*/
+body, html {
+	height:100%;
+	width:100%;
+}
+a {
+	color:#333333;
+	text-decoration:none;
+}
+/*----------網頁png----------*/
+div, img { 
+	behavior:url(/images/iepngfix.htc);
+}
+body{
+	font-size:1em;
+	font-family:"微軟正黑體", "細明體";
+	padding:0;
+	margin:0;
+	background:#daebf7;
+}
+#native{
+	font-size:1em !important;
+	color:#FFFFFF;
+	clear:both;
+	background:url(/images/bg_native.jpg) repeat-x top;
+	line-height:35px;
+	min-height:35px;
+	padding:10px 0;
+	text-align:center;
+	position:relative;
+	z-index:9999;
+	text-shadow:0 0 2px #333;
+	box-shadow:0 2px 2px rgba(0,0,0,.7);
+}
+#native a{
+	color:#FFFFFF;
+}
+#native .img{
+	height:35px;
+	width:auto;
+}
+#native .back{
+	position:absolute;
+	top:10px;
+	left:10px;
+}
+#bread{
+	font-size:0.8em;
+	background:rgba(255,255,255,.5);
+	box-shadow:0 2px 2px rgba(0,0,0,.5);
+	padding:0 10px;
+	display:block;
+	line-height:3em;
+}
+#bread a{
+	font-size:0.8em;
+	color:#999999;
+}
+#bread h6{
+	float:right;
+	font-size:1.2em;
+	color:#333333;
+}
+/*------------------------------------------------------*/
+#content{
+	clear:both;
+	overflow:hidden;
+	position:relative;
+	padding:15px 12px 50px 12px;
+	text-align:justify;
+	line-height:22px;
+}
+#content2{
+	clear:both;
+	overflow:hidden;
+	position:relative;
+	padding:0 0 45px 0;
+	text-align:justify;
+	line-height:22px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 979px) {
+}
+@media screen and (max-width: 767px) {
+}
+@media screen and (max-width: 480px) {
+}

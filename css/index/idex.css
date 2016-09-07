@@ -1,0 +1,190 @@
+@charset "utf-8";
+/* CSS Document */
+#advertise{
+	position:relative;
+	width:100%;
+	height:auto;
+}
+#advertise img{
+	position:relative;
+	width:100%;
+	height:auto;
+	box-shadow:0 1px 3px rgba(0,0,0,.7);
+	z-index:999;
+}
+/*------------------------------*/
+div#abgne_marquee {
+		position: relative;
+		overflow: hidden;	/* 超出範圍的部份要隱藏 */
+		width: 100%;
+		height: 50px;
+		background:#005f88;
+		color:#FFFFFF;
+	}
+	div#abgne_marquee ul, div#abgne_marquee li {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	div#abgne_marquee ul {
+		position: absolute;
+		left: 30px;			/* 往後推個 30px */
+	}
+	div#abgne_marquee ul li a {
+		font-size:15px;
+		color:#FFFFFF;
+		display: block;
+		overflow: hidden;	/* 超出範圍的部份要隱藏 */
+		height: 50px;
+		line-height: 50px;
+		text-decoration: none;
+	}
+	div#abgne_marquee div.marquee_btn {
+		position: absolute;
+		cursor: pointer;
+		top:15px;
+	}
+	div#abgne_marquee div#marquee_next_btn {right: 5px; width:10px; height:20px; background:url(../fonts/ixcon.svg) no-repeat right;}
+	div#abgne_marquee div#marquee_prev_btn {left: 5px; width:10px; height:20px; background:url(../fonts/ixcon.svg) no-repeat left;}
+
+
+
+/* -------------------------------- 
+Primary style
+-------------------------------- */
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* -------------------------------- 
+Main components 
+-------------------------------- */
+.cd-testimonials-wrapper {
+  position: relative;
+  width:100%;
+  max-width: ;
+  background-color: #005f88;
+  margin: 0 auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  z-index: 1;
+  text-align:center;
+}
+.cd-testimonials-wrapper::after {
+  /* quotation mark */
+  content: '\201C';
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  padding-top: 8px;
+  margin-left: -25px;
+  background: rgba(32, 32, 34, 0.9);
+  font-family: "Georgia", serif;
+  color: #ffffff;
+  font-size: 70px;
+  font-size: 4.375rem;
+  text-align: center;
+  /* visible on big devices only */
+  display: none;
+}
+
+.cd-testimonials {
+	font-size:1.2em;
+  color: #ffffff;
+  text-align: center;
+}
+.cd-testimonials::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+.cd-testimonials > li {
+  float:left;
+  position: absolute;
+  opacity: 0;
+}
+.cd-testimonials > li:first-child {
+  position: relative;
+  opacity: 1;
+}
+.cd-testimonials > li img{
+	display:block;
+	box-shadow:0 2px 3px #000;
+	width:100%;
+	min-height:240px;
+}
+.cd-testimonials a b {
+  padding:15px;
+  display:block;
+}
+/*------------------------------------------  左右鍵 -----------*/
+.flex-direction-nav li {
+  position: absolute;
+  height: 100%;
+  width: 40px;
+  bottom: 0;
+}
+.flex-direction-nav li:first-child {
+  left: 0;
+}
+.flex-direction-nav li:last-child {
+  right: 0;
+}
+.flex-direction-nav li a {
+  display: block;
+  height: 100%;
+  width: 100%;
+  /* image replacement */
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+  -webkit-transition: background-color 0.2s;
+  -moz-transition: background-color 0.2s;
+  transition: background-color 0.2s;
+}
+.no-touch .flex-direction-nav li a:hover {
+  background:rgba(0,0,0,.7);
+}
+.flex-direction-nav li a::before, .flex-direction-nav li a::after {
+  /* left and right arrows in css only */
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -15px;
+  width: 2px;
+  height: 13px;
+  background-color: #ffffff;
+}
+.flex-direction-nav li a::before {
+  -webkit-transform: translateY(-35px) rotate(45deg);
+  -moz-transform: translateY(-35px) rotate(45deg);
+  -ms-transform: translateY(-35px) rotate(45deg);
+  -o-transform: translateY(-35px) rotate(45deg);
+  transform: translateY(-35px) rotate(45deg);
+}
+.flex-direction-nav li a::after {
+  -webkit-transform: translateY(-27px) rotate(-45deg);
+  -moz-transform: translateY(-27px) rotate(-45deg);
+  -ms-transform: translateY(-27px) rotate(-45deg);
+  -o-transform: translateY(-27px) rotate(-45deg);
+  transform: translateY(-27px) rotate(-45deg);
+}
+.flex-direction-nav li:last-child a::before {
+  -webkit-transform: translateY(-35px) rotate(-45deg);
+  -moz-transform: translateY(-35px) rotate(-45deg);
+  -ms-transform: translateY(-35px) rotate(-45deg);
+  -o-transform: translateY(-35px) rotate(-45deg);
+  transform: translateY(-35px) rotate(-45deg);
+}
+.flex-direction-nav li:last-child a::after {
+  -webkit-transform: translateY(-27px) rotate(45deg);
+  -moz-transform: translateY(-27px) rotate(45deg);
+  -ms-transform: translateY(-27px) rotate(45deg);
+  -o-transform: translateY(-27px) rotate(45deg);
+  transform: translateY(-27px) rotate(45deg);
+}

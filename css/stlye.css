@@ -1,0 +1,406 @@
+@charset "utf-8";
+
+*{
+	margin:0px;
+	padding:0px;
+	}
+	
+.body {
+	/*width:950px;*/
+	text-align:left;
+	font-size:13px;
+	font-family:"微軟正黑體", Arial;
+	color:#333;
+	}
+.top02_login {
+	float: none;
+	padding-left: 70px;
+	clear: both;
+	position: static;
+	visibility: visible;
+}
+.top02_loginname {
+	float: none;
+	clear: right;
+}
+.font_food_13 {
+	text-align:center;
+	font-size:13px;
+	font-family:"微軟正黑體", Arial;
+	color:#e5e5e5;
+	line-height:160%;
+	letter-spacing:1pt;
+	}
+.font_food_13 a:link {	
+	color: #ffffff;
+	text-decoration: none;
+	}
+.font_food_13 a:hover {	
+	color: #666666;
+	text-decoration: none;
+	}
+	
+.font_news_13 {
+	text-align: left;
+	font-size: 13px;
+	font-family: "微軟正黑體", Arial;
+	color: #333333;
+	line-height: 160%;
+	letter-spacing: 1pt;
+	text-indent:20px; 
+	}
+.font_news_13 a:link {	
+	color: #333333;
+	text-decoration: none;
+	}
+.font_news_13 a:hover {
+	color: #308e8e;
+	text-decoration: none;
+	font-family: "微軟正黑體", Arial;
+	}
+	
+.font_sitemap_13 {
+	text-align: left;
+	font-size: 13px;
+	font-family: "微軟正黑體", Arial;
+	color: #333333;
+	line-height: 160%;
+	letter-spacing: 1pt;
+	text-indent:5px; 
+	}
+.font_sitemap_13 a:link {	
+	color: #333333;
+	text-decoration: none;
+	}
+.font_sitemap_13 a:hover {	
+	color: #308e8e;
+	text-decoration: none;
+	}
+	
+.font_nextpage_13 {
+	text-align: center;
+	font-size: 13px;
+	font-family: "微軟正黑體", Arial;
+	color: #333333;
+	line-height: 160%;
+	letter-spacing: 1pt;
+	}
+.font_nextpage_13 a:link {	
+	color: #333333;
+	text-decoration: none;
+	}
+.font_nextpage_13 a:hover {	
+	color: #308e8e;
+	text-decoration: none;
+	}
+	
+.font_title_16 {
+	text-align: lefe;
+	font-size: 16px;
+	font-family: "微軟正黑體", Arial;
+	color: #308e8e;
+	line-height: 160%;
+	letter-spacing: 2pt;
+	text-indent:90px; 
+	}
+.font_logon_13 {
+	text-align: right;
+	font-size: 13px;
+	font-family: "微軟正黑體", Arial;
+	color: #333333;
+	line-height: 160%;
+	letter-spacing: 1pt;
+	}	
+/******************管理系統_右側表格*****************************/	
+.crm_title_list {
+	border-width:1px;
+	border-top-style:solid; 
+	border-bottom-style:dotted;
+	border-color:#308e8e;
+	line-height:300%;
+	}	
+.crm_txt_list {
+	border-width:1px;
+	border-bottom-style:dotted;
+	border-color:#308e8e;
+	line-height:300%;
+	text-align: left;
+	font-size: 13px;
+	font-family: "微軟正黑體", Arial;
+	color: #333333;
+	letter-spacing: 1pt;
+	text-indent:5px; 
+	}
+.crm_subject_list {
+	border-width:1px;
+	border-bottom-style:dotted;
+	border-color:#308e8e;
+	line-height:300%;
+	text-align: right;
+	font-size: 13px;
+	font-family: "微軟正黑體", Arial;
+	color: #333333;
+	letter-spacing: 1pt;
+	}
+/******************管理系統***********************************/	
+.font_crm_list_title {
+	text-align: left;
+	font-size: 16px;
+	font-family: "微軟正黑體", Arial;
+	color: #333333;
+	line-height: 160%;
+	letter-spacing: 1pt;
+	text-indent:20px; 
+	}
+.font_crm_list_title a:link {	
+	color: #333333;
+	text-decoration: none;
+	}
+.font_crm_list_title a:hover {	
+	color: #308e8e;
+	text-decoration: none;
+	}
+	
+.font_crm_list {
+	text-align: left;
+	font-size: 13px;
+	font-family: "微軟正黑體", Arial;
+	color: #333333;
+	line-height: 160%;
+	letter-spacing: 1pt;
+	text-indent:5px; 
+	}
+.font_crm_list a:link {	
+	color: #333333;
+	text-decoration: none;
+	}
+.font_crm_list a:hover {	
+	color: #308e8e;
+	text-decoration: none;
+	}
+		
+/******************輸入框***********************************/
+.input,textarea {
+    padding: 5px;
+    font-size: 13px;
+    outline: none;
+    text-shadow: 0px 1px 0px #fff;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    -webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out;
+}
+
+input:focus,textarea:focus {
+     border: 1px solid #fafafa;
+     -webkit-box-shadow: 0px 0px 6px #007eff;
+     -moz-box-shadow: 0px 0px 5px #007eff;
+     box-shadow: 0px 0px 5px #007eff;
+}
+/******************按鈕***********************************/	
+.myButton {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf));
+	background:-moz-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+	background:-webkit-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+	background:-o-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+	background:-ms-linear-gradient(top, #ededed 5%, #dfdfdf 100%);
+	background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf',GradientType=0);
+	background-color:#ededed;
+	-moz-border-radius:8px;
+	-webkit-border-radius:8px;
+	border-radius:8px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#777777;
+	font-family:arial;
+	font-size:13px;
+	font-weight:bold;
+	padding:4px 14px;
+	text-decoration:none;
+	text-shadow:0px 0px 15px #ffffff;
+}
+.myButton:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed));
+	background:-moz-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
+	background:-webkit-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
+	background:-o-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
+	background:-ms-linear-gradient(top, #dfdfdf 5%, #ededed 100%);
+	background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed',GradientType=0);
+	background-color:#dfdfdf;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+/******************產品輪播***********************************/	
+	
+		.abgne-yahoo-carousel {
+		width: 687px;
+		height: 153px;
+		padding: 10px;
+		/**border: 1px solid #ccc;*//**大外框**/
+		position: relative;
+		float: right;
+		top: 20px;
+	}
+	.abgne-yahoo-carousel * {
+		margin: 0;
+		padding: 0;
+	}
+	.abgne-yahoo-carousel ul, .abgne-yahoo-carousel li {
+		list-style: none;
+	}
+	.abgne-yahoo-carousel a img {
+		border: none;
+		width: 129px;
+		height:134px;
+		border: 1px solid #d8d8d8;
+	}
+	.abgne-yahoo-carousel h3 {
+		font-size: 10px;
+		height: 30px;
+		width: 129px;
+		left: 1px;
+		font-weight: normal;		
+		
+	}
+	
+	.abgne-yahoo-carousel .btn {
+	position: absolute;
+	top: 71px;
+	right: 31px;
+	height: 20px;
+	width: 686px;
+	}
+	.abgne-yahoo-carousel .btn a {
+		width: 31px;
+		height: 24px;
+		float: left;
+		text-indent: -9999px;
+	}
+	.abgne-yahoo-carousel .btn a.prev {
+		background: url(/images/index/btn.gif) no-repeat 0 -42px;
+	}
+	.abgne-yahoo-carousel .btn a.next {
+		background: url(/images/index/btn.gif) no-repeat 0 0;
+	}
+	.abgne-yahoo-carousel .frame {
+		position: relative;
+		overflow: hidden;
+		width: 607px;	/* (li 的寬度 + li 的邊框寬度 * 2 ) * 一次要顯示的數量 + li 的右邊界 * (一次要顯示的數量 - 1) */
+		height: 200px;
+		left: 28px;
+	}
+	.abgne-yahoo-carousel ul {
+		width: 99999px;
+		position: absolute;
+	}
+	.abgne-yahoo-carousel li {
+		float: left;
+		width: 129px;
+		height: 164px;
+		position: relative;
+		margin-right: 25px;
+		/*border: 1px solid #333;*//**圖框框*/
+	}
+	.abgne-yahoo-carousel li .thumb, .abgne-yahoo-carousel li .ovrly, .abgne-yahoo-carousel li h3 {
+		position: absolute;
+	}
+	.abgne-yahoo-carousel li .ovrly, .abgne-yahoo-carousel li h3 {
+		/*width: 100%;*//**色塊**/
+		height: 32px;
+		line-height: 32px;
+		text-align: center;
+		bottom: 0;
+	}
+	.abgne-yahoo-carousel li .ovrly {
+		/*background: #000;*//*文字背景色*/
+	}
+	.abgne-yahoo-carousel li h3 a {
+		color: #666;
+	}
+	.abgne-yahoo-carousel li h3 a:hover {
+		color: #006ca9;
+	}
+	
+	
+/**    2014.01.02    **/
+
+#container {
+	width: 1000px;
+	margin-right: auto;
+	margin-left: auto;
+}
+#maincontent {
+	height:110px;
+	text-align: left;
+	background-image: url(/images/bg_mainmenu_01.jpg);
+	background-repeat: no-repeat;
+	background-position: 0px bottom;
+	margin-top: 6px;
+}
+#logo {
+	width: 345px;
+	height:102px;
+	float:left;
+	}
+#mainmenu{
+	margin-top:40px;
+	width: 655px;
+	height:63px;
+	float:left;
+	}
+#mainmenu a {
+	float:left;
+	display:block;
+	}
+
+
+#submenu {
+	float: left;
+	width: 260px;
+	font-size: 13px;
+	text-align: left;
+	background-image: url(/images/crm_list_01.jpg);
+	background-repeat: repeat-y;
+	background-position: 0px 0px;
+}
+#submenu_text {
+	margin:5px auto;
+	padding:0px 10px;
+	width: 240px;	
+}
+#submenu_text1 {
+	margin:5px auto;
+	padding:0px 20px;
+	width: 220px;
+}
+
+#content{
+	width:730px;
+	float: left;
+	}
+
+#info {
+
+	background-image: url(/images/crm_bg_a02.jpg);
+	background-repeat: repeat-y;
+	background-position: 0px 0px;
+	margin:20px 0px;
+	}
+#info2 {
+	padding:0px 20px 10px 30px;
+	}
+	
+
+	
+.clear{
+	clear:both;
+	}

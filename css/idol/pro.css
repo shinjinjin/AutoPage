@@ -1,0 +1,361 @@
+@charset "utf-8";
+/* CSS Document */
+body{
+	background:#f2f2f2;
+}
+#mynav{ font-size:0.8em !important; background:rgba(255,255,255,.8); position:relative; z-index:999; color:#888888; line-height:24px; width:100%; box-shadow:0 2px 2px rgba(0,0,0,.5); text-align:center; padding:5px 0;}
+#mynav form{ padding:7px;}
+#mynav li{ display:inline-table; padding:0 2px; color:#ff0024;}
+#mynav li a{ color:#888888;}
+#mynav li a:hover{color:#ff0024; text-decoration:underline;}
+
+/*----------------------------------------------------   prodcuts ------*/
+.container {
+    padding: 0 5px;
+}
+.j-forms{
+	overflow:hidden;
+	padding:5px 0 10px;
+}
+.j-forms #keyword{
+	height:40px;
+	margin:1px 0 0 0;
+}
+.j-forms .primary-btn{
+	height:40px;
+}
+.j-forms .primary-btn2{
+	background:#b86e78;
+}
+
+
+
+
+/*------------------------  search  -------------------*/
+.search_info{ font-size:.8em; color:#666; display:block; padding:15px 0 15px 10px; background:url(/images/icon_arrow.png) left center no-repeat; margin:0 0 0 10px;}
+.search_info b{ color:#F00;}
+
+
+
+
+/*-----------------------------------------------------------------------------------*/
+/*	ISOTOPE PORTFOLIO GRID
+/*-----------------------------------------------------------------------------------*/
+.full-portfolio {
+    overflow: hidden;
+	padding:5px 0;
+}
+.full-portfolio .items {
+    width: 100%;
+    clear: both;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.full-portfolio .items li {
+    float: left;
+    position: relative;
+    background: none;
+    padding: 0 0 10px;
+    /* width: 16.666666667%; */
+}
+.full-portfolio .items li img {
+    display: block;
+    /*position: relative;*/
+    width: 100%;
+    height: auto;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    -moz-opacity: 1;
+    -khtml-opacity: 1;
+    opacity: 1;
+}
+.full-portfolio .items li span{
+	font-size:.9em;
+	display:block;
+	background:#ebb2ba;
+	text-align:center;
+	padding:8px 5px;
+	min-height:66px;
+	line-height:20px;
+}
+.full-portfolio .items li span em{
+	font-family:"Times New Roman", Times, serif;
+	font-style:italic;
+	display:block;
+	text-align:right;
+	color:#ff0000;
+	position:absolute;
+	right:10px;
+	bottom:5px;
+}
+.full-portfolio .items:after {
+    content: '';
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.filter {
+    font-size: 0;
+    margin-bottom: 20px;
+	overflow:hidden;
+}
+.filter li {
+    display:inline-block;
+    color: #656565;
+	margin:10px 3px 5px 0;
+}
+.filter.text-center li {
+    display: inline-block;
+}
+.filter li a {
+    color: #656565;
+    padding: 8px 12px;
+	border-radius:5px;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+	background: rgba(255,255,255,1);
+}
+.filter li a:hover {
+    color: #fff;
+	background: rgba(84,84,84,.5);
+}
+.filter li a.active {
+    color: #fff;
+    background: rgba(84,84,84,.8);
+}
+.filter li:first-child a {
+    border-left: 1px solid #dbdbdb;
+}
+/*-----------------------------------------------------------------------------------*/
+/*	OVERLAY
+/*-----------------------------------------------------------------------------------*/
+figure {
+    display: block;
+    overflow: hidden;
+    position: relative;
+	margin:0 4px;
+}
+.items li figure img {
+    display: block;
+    width: 100%;
+}
+figure li a,figure li a img {
+    display: block;
+    position: relative;
+}
+figure img {
+    display: block;
+    max-width: 100%;
+    -webkit-backface-visibility: hidden;
+    -o-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+figure a:hover img {
+    -o-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+figure a .text-overlay {
+    opacity: 0;
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    -MS-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    height: 100%;
+    position: absolute;
+    text-decoration: none;
+    width: 100%;
+    z-index: 100;
+    padding: ;
+    background: #222;
+    background: rgba(53,53,53,0.93);
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    transition: all 0.4s;
+}
+figure a:hover .text-overlay {
+    opacity: 1;
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    -MS-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+figure a .text-overlay:before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    border: 1px solid rgba(255,255,255,0.5);
+}
+figure a .text-overlay .info {
+    text-align: center;
+    top: 50%;
+    width: 100%;
+    left: 0;
+    position: absolute;
+    color: #fff;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+.icon-overlay {
+    display: block;
+    overflow: hidden;
+    position: relative;
+}
+.icon-overlay img {
+    display: block;
+    max-width: 100%;
+    -webkit-backface-visibility: hidden;
+    -o-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+.icon-overlay a:hover img {
+    -o-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
+@media screen and (min-width: 1200px) {
+    /* 如果使用者之視窗寬度 >= 1200px，將會再載入這裡的 CSS。*/
+
+}
+@media screen and (min-width: 980px) and (max-width: 1199px) {
+    /* 如果使用者之視窗寬度介於 980px ~ 1199px，將會再載入這裡的 CSS。*/
+}
+@media screen and (min-width: 768px) and (max-width: 979px) {
+    /* 如果使用者之視窗寬度介於 768px ~ 979px，將會再載入這裡的 CSS。*/
+
+}
+@media screen and (max-width: 767px) {
+    /* 如果使用者之視窗寬度 <= 768px，將會再載入這裡的 CSS。*/
+	body{ border: px #FF00FF solid;}
+	.filter li {
+		float:left;
+	    display: inline-block;
+	}
+	.filter li a {
+	}
+}
+@media screen and (max-width: 480px) {
+    /* 如果使用者之裝置寬度 <= 480px，將會再載入這裡的 CSS。*/
+	body{ border: px #0000FF solid;}
+	.full-portfolio .items li span{ font-size:0.8em; min-height:55px;}
+}
+
+
+/*--------------------------------------------------------- 
+------------------------------  banner  -------------------
+-----------------------------------------------------------*/
+#pic{
+	clear:both;
+	width:100%;
+	max-height:250px;
+	text-align:center;
+	background:#FFFFFF;
+	overflow:hidden;
+	position:relative;
+}
+#pic img{
+	height:250px;
+}
+#pic span{
+	position:absolute;
+	width:100%;
+	left:0;
+	bottom:0;
+	text-align:center;
+	background:rgba(0,0,0,.7);
+	color:#FFFFFF;
+}
+#pic span h3{
+	font-size:1em;
+	line-height:1.2em;
+	display:block;
+	padding:10px;
+	clear:both;
+}
+/*--------------*/
+.price{
+	font-size:1em;
+	color:#333333;
+	clear:both;
+	text-align:center;
+	line-height:50px;
+	border-bottom:1px #cccccc solid;
+	background:#FFFFFF;
+}
+.price span{
+	float:right;
+	border-left:1px #cccccc solid;
+	width:50%;
+}
+.price em{
+	font-style:italic;
+	text-decoration:line-through;
+}
+.price i{
+	font-size:1.2em;
+	font-family:"Times New Roman", Times, serif;
+	font-style:italic;
+	color:#FF0000;
+}
+.price2{
+	font-size:1em;
+	color:#000000;
+	clear:both;
+	text-align:center;
+	line-height:50px;
+	background:#FFFFFF;
+}
+.price2 i{
+	font-size:1.8em;
+	font-family:"Times New Roman", Times, serif;
+	font-style:italic;
+	color:#FF0000;
+}
+.price2 q{
+	font-size:0.9em;
+	color:#999999;
+}
+.num{ font-size:.9em; display:block; text-align:center; letter-spacing:1px;}
+.num span{ color:#666;}
+@media screen and (max-width: 480px) {
+    .num { background:#EAEAEA; padding:.8em 0; margin:0 0 1em;}
+}
+.del{
+	font-size:.9em;
+	clear:both;
+	box-shadow:0 2px 2px rgba(0,0,0,.5);
+	line-height:30px;
+	padding:0 10px 10px;
+	margin:0 0 5px;
+	overflow:hidden;
+}
+.del select{ font-size:1em; border:1px #CCCCCC solid; min-width:25%; height:40px; border-radius:5px; background:#FFFFFF; padding:0 5px;}
+.btn{ font-size:1em; width:35%; height:40px; border-radius:5px; box-shadow:0 2px 2px; border:1px #2b669a solid; text-shadow:0 2px 2px #000; cursor:pointer; color:#FFFFFF;
+ 	background:#4087c5;
+    background: #4087c5 -moz-linear-gradient(top, #4087c5 0%, #2d6ca2 100%); /* FF3.6+ */
+    background: #4087c5 -webkit-gradient(linear, left top, left bottom, color-stop(0%,#4087c5), color-stop(100%,#2d6ca2)); /* Chrome,Safari4+ */
+    background: #4087c5 -webkit-linear-gradient(top, #4087c5 0%, #2d6ca2 100%); /* Chrome10+,Safari5.1+ */
+    background: #4087c5 -o-linear-gradient(top, #4087c5 0%, #2d6ca2 100%); /* Opera11.10+ */
+    background: #4087c5 -ms-linear-gradient(top, #4087c5 0%, #2d6ca2 100%); /* IE10+ */
+    background: #4087c5 linear-gradient(top, #4087c5 0%, #2d6ca2 100%); /* W3C */ }
+
+.infor{
+	font-size:.9em;
+	clear:both;
+	padding:15px 10px;
+}
+

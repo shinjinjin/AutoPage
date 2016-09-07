@@ -1,0 +1,5 @@
+RewriteEngine on
+RewriteBase /
+RewriteCond $1 !^(index\.php|weishin\.php|class\.php|images|phpmyadmin|ver|uploads|text|app|_captcha|js|css|fonts|BingSiteAuth\.xml|robots\.txt|$)
+RewriteRule ^(.+)$ index.php?$1 [L] 
+ 
