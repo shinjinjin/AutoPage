@@ -24,15 +24,16 @@
                 </tr>
             <?
                 endif;
-                //Input checkbox
+                //Input Radio
                 if($fvalue['d_type']==2):
             ?>
                 <tr>
                   <th><?=$fvalue['d_title']?></th>
                   <td>
-                    <? foreach ($fvalue['d_val'] as $key => $value):?>
-                      <input value=<?=$key?> name="<?=$fvalue['d_fname']?>" id="<?=$fvalue['d_fname']?>" <?php echo ($dbdata[$fvalue['d_fname']]==$key)?'checked':'';?> type="radio"><?=$value?>
-                    <? endforeach;?>
+                    <? $num=0;
+                    foreach ($fvalue['d_val'] as $key => $value):?>
+                      <input value=<?=$key?> name="<?=$fvalue['d_fname']?>" id="<?=$fvalue['d_fname']?>" <?php $ch=($dbdata[$fvalue['d_fname']]==$key)?'checked':'';$ch=($num==0)?'checked':''; echo $ch;?> type="radio"><?=$value?>
+                    <? $num++;endforeach;?>
                   </td>
                 </tr>
             <?
@@ -40,6 +41,15 @@
                 //Input checkbox
                 if($fvalue['d_type']==3):
             ?>
+                <tr>
+                  <th><?=$fvalue['d_title']?></th>
+                  <td>
+                    <? foreach ($fvalue['d_val'] as $key => $value):?>
+                        <input value=<?=$key?> name="<?=$fvalue['d_fname']?>[]" id="<?=$fvalue['d_fname'].$key?>" <?php $ch=($dbdata[$fvalue['d_fname']]==$key)?'checked':'';$ch=($num==0)?'checked':''; echo $ch;?> type="checkbox"><label for="<?=$fvalue['d_fname'].$key?>"><?=$value?></label>
+                    <? endforeach;?>
+                    
+                  </td>
+                </tr>
             <?
                 endif;
                 //Input checkbox
@@ -78,7 +88,13 @@
             <?  endif;
               endforeach;
             ?>
-          	
+          	<tr>
+              <th>狀態</th>
+              <td>
+                <input <?=(empty($dbdata['d_enable']))?'checked':'';echo ($dbdata['d_enable']=='Y')?'checked':'';?> name="d_enable" value="Y" type="radio">啟動
+                <input <?=($dbdata['d_enable']=='N')?'checked':'';?>name="d_enable" value="N" type="radio">關閉
+              </td>
+            </tr>
           </table>
         </div>
         <div class="clear"></div>

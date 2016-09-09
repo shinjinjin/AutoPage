@@ -65,7 +65,7 @@ class Mymodel extends MY_Model{
 
 	//權限抓取
 	public function get_jur($s_id=''){
-	    $sql="select d_id,d_code,d_name,d_head,d_dbname from d_menu";
+	    $sql="select d_id,d_code,d_menuname,d_head,d_dbname from d_menu";
 	    if($s_id!='')
 	      $sql.=" where d_p_id=".$s_id;
 	    else
@@ -95,7 +95,7 @@ class Mymodel extends MY_Model{
 		$sql.=' order by d_sort';
 		$query = $this->db->query($sql)->result_array();
 		foreach ($query as $key => $value) {
-			if($value['d_type']==2){
+			if($value['d_type']==2 || $value['d_type']==3){
 				if(!empty($value['d_config'])){
 					$dbdata=$this->GetConfig($value['d_config']);
 					foreach ($dbdata as $dkey => $dvalue){
@@ -105,6 +105,7 @@ class Mymodel extends MY_Model{
 					$str=explode('@#',$value['d_val']);
 				$query[$key]['d_val']=$str;
 			}
+			
 		}
 		// print_r($query);
 		// break;
@@ -113,7 +114,7 @@ class Mymodel extends MY_Model{
 
 	//自動頁面標題
 	public function GetMenuData($menu_id){		
-		$msql='select d_name,d_head,d_dbname from d_menu where d_id='.$menu_id;
+		$msql='select d_menuname,d_listname,d_head,d_dbname,is_enable from d_menu where d_id='.$menu_id;
 		$mquery = $this->db->query($msql)->row_array();
 		return $mquery;
 	}

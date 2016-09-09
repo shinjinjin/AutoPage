@@ -17,8 +17,45 @@ class Daymore extends MY_Controller {
 		$this->load->library('mylib/comment');
 	}
 
-	//文章列表
+	//文章分類列表
 	public function article_type(){
+		//頭尾、基本設定
+		$this->useful->backconfig();
+
+		//自動頁面欄位
+		$fdata=$this->mymodel->GetAutoPage($_SESSION['Menu']['menuid'],'list');
+		$data['fdata']=$fdata;
+
+		//分頁程式 start
+		$data['ToPage']=$Topage=!empty($_POST['ToPage'])?$_POST['ToPage']:1;
+		$qpage=$this->useful->SetPage($_SESSION['Menu']['FileName'],'','10');
+		$data['page']=$this->useful->get_page($qpage);
+		//分頁程式 end
+
+		//撈取資料
+		$dbdata=$this->mymodel->select_page_form($_SESSION['Menu']['FileName'],$qpage['result'],$fdata);
+		$data['dbdata']=$dbdata;
+
+		$this->load->view('admin_sys/autopage/auto_list',$data);
+	}
+	//文章分類
+	public function article_type_info(){
+		//頭尾、基本設定
+		$this->useful->backconfig();
+
+		//自動頁面欄位
+		$fdata=$this->mymodel->GetAutoPage($_SESSION['Menu']['menuid']);
+		$data['fdata']=$fdata;
+		//撈取資料
+		if(!empty($_POST['d_id'])){
+			$dbdata=$this->mymodel->OneSearchSql($_SESSION['Menu']['FileName'],'*',array('d_id'=>$_POST['d_id']));			
+			$data['dbdata']=$dbdata;		
+		}
+
+		$this->load->view('admin_sys/autopage/auto_info',$data);
+	}
+	//文章列表
+	public function article(){
 		//頭尾、基本設定
 		$this->useful->backconfig();
 
@@ -39,12 +76,13 @@ class Daymore extends MY_Controller {
 		$this->load->view('admin_sys/autopage/auto_list',$data);
 	}
 	//文章內文
-	public function article_type_info(){
+	public function article_info(){
 		//頭尾、基本設定
 		$this->useful->backconfig();
 
 		//自動頁面欄位
-		$fdata=$this->mymodel->GetAutoPage($_SESSION['Menu']['menuid'],'list');
+		$fdata=$this->mymodel->GetAutoPage($_SESSION['Menu']['menuid']);
+
 		$data['fdata']=$fdata;
 		//撈取資料
 		if(!empty($_POST['d_id'])){
@@ -74,7 +112,8 @@ class Daymore extends MY_Controller {
 		$dbname=$_POST['dbname'];
 		$fileid='d_id';
 
-		$fdata=$this->mymodel->GetAutoPage($_SESSION['Menu']['menuid'],'list');
+		$fdata=$this->mymodel->GetAutoPage($_SESSION['Menu']['menuid']);
+		//處理必填欄位
 		foreach ($fdata as $cvalue):
 			if($cvalue['d_must']=='Y')
 				$check->fname[]=array($cvalue['d_musttype'],Comment::SetValue($cvalue['d_fname']),$cvalue['d_title']);
@@ -89,6 +128,15 @@ class Daymore extends MY_Controller {
 			echo $check->main();
 			return '';
 		}
+
+		//各型態處理函式
+		foreach ($fdata as $cvalue):
+			//CheckBox處理
+			if($cvalue['d_type']=='3'){
+				$Str=implode('@#',$_POST[$cvalue['d_fname']]);
+				$_POST[$cvalue['d_fname']]=$Str;
+			}
+		endforeach;
 
 		if($id){
 			$data=$this->useful->DB_Array($_POST);

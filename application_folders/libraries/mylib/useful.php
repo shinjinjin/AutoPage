@@ -7,22 +7,29 @@ class Useful extends MY_Model {
 		
 		//列表
 		$data['menu']=$this->set_jur();
+
 		$data['user_name']=$_SESSION['user_name'];
 		//標題
 		$data['header']=$this->mymodel->BaseConfig();
 
 		//記錄列表ID
-		if(!empty($_POST['menuid']))
+		if(!empty($_POST['menuid'])){
 			$_SESSION['Menu']['menuid']=$_POST['menuid'];
-		//列表資料
-		$MenuData=$this->mymodel->GetMenuData($_SESSION['Menu']['menuid']);
-		//標題名稱
-		$data['TitleName']=$MenuData['d_name'];
-		//檔案名稱
-		$data['DBName']=$_SESSION['Menu']['DBName']=$MenuData['d_head'];
-		//資料庫名稱&函式名稱
-		$data['FileName']=$_SESSION['Menu']['FileName']=$MenuData['d_dbname'];
+		}
 
+		if(!empty($_SESSION['Menu']['menuid'])){
+			//列表資料
+			$MenuData=$this->mymodel->GetMenuData($_SESSION['Menu']['menuid']);
+			// print_r($MenuData);
+			//標題名稱
+			$data['TitleName']=$MenuData['d_listname'];
+			//檔案名稱
+			$data['DBName']=$MenuData['d_head'];
+			//資料庫名稱&函式名稱
+			$data['FileName']=$_SESSION['Menu']['FileName']=$MenuData['d_dbname'];
+			//該函式是否有啟動功能
+			$data['IsEnable']=$MenuData['is_enable'];
+		}
 		
 		//新增或修改
 		if(!empty($_POST['d_id'])){
@@ -186,9 +193,9 @@ class Useful extends MY_Model {
 		foreach ($data as $key => $value) {
 			$cdata=$this->mymodel->get_jur($value['d_id']);
 			foreach ($cdata as $ckey => $cvalue) {
-					$sdata[$value['d_name']][]=array(
+					$sdata[$value['d_menuname']][]=array(
 						'd_code'=>$cvalue['d_code'],
-						'd_name'=>$cvalue['d_name'],
+						'd_name'=>$cvalue['d_menuname'],
 						'd_head'=>$cvalue['d_head'],
 						'd_dbname'=>$cvalue['d_dbname'],
 						'd_id'=>$cvalue['d_id'],
