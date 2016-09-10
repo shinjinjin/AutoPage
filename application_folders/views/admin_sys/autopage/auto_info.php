@@ -13,11 +13,13 @@
         <form action="./data_AED" method="post" enctype="multipart/form-data">
           <table border="0" cellspacing="0" cellpadding="0" class="contentin-table" style="width:100%;">
             <? foreach ($fdata as $fkey => $fvalue):
+                $Star=($fvalue['d_must']=='Y')?'<span style="color:RED;">*</span>':'';
+
                 //Input Text
                 if($fvalue['d_type']==1):
             ?>
                 <tr>
-                  <th><?=$fvalue['d_title']?></th>
+                  <th><?=$Star.$fvalue['d_title']?></th>
                   <td>
                     <input type="text" name="<?=$fvalue['d_fname']?>" value="<?php echo $dbdata[$fvalue['d_fname']]?>" id="<?=$fvalue['d_fname']?>"  class="contentin-table-tdtextfield"  >
                   </td>
@@ -28,7 +30,7 @@
                 if($fvalue['d_type']==2):
             ?>
                 <tr>
-                  <th><?=$fvalue['d_title']?></th>
+                  <th><?=$Star.$fvalue['d_title']?></th>
                   <td>
                     <? $num=0;
                     foreach ($fvalue['d_val'] as $key => $value):?>
@@ -42,49 +44,102 @@
                 if($fvalue['d_type']==3):
             ?>
                 <tr>
-                  <th><?=$fvalue['d_title']?></th>
+                  <th><?=$Star.$fvalue['d_title']?></th>
                   <td>
                     <? foreach ($fvalue['d_val'] as $key => $value):?>
-                        <input value=<?=$key?> name="<?=$fvalue['d_fname']?>[]" id="<?=$fvalue['d_fname'].$key?>" <?php $ch=($dbdata[$fvalue['d_fname']]==$key)?'checked':'';$ch=($num==0)?'checked':''; echo $ch;?> type="checkbox"><label for="<?=$fvalue['d_fname'].$key?>"><?=$value?></label>
+                        <input value=<?=$key?> name="<?=$fvalue['d_fname']?>[]" id="<?=$fvalue['d_fname'].$key?>" <?php echo preg_match("/".$key."/i",$dbdata[$fvalue['d_fname']])?'checked':'';?> type="checkbox"><label for="<?=$fvalue['d_fname'].$key?>"><?=$value?></label>
                     <? endforeach;?>
                     
                   </td>
                 </tr>
             <?
                 endif;
-                //Input checkbox
+                //Input select
                 if($fvalue['d_type']==4):
             ?>
+                <tr>
+                  <th><?=$Star.$fvalue['d_title']?></th>
+                  <td>
+                    <select name="<?=$fvalue['d_fname']?>" id="<?=$fvalue['d_fname']?>">
+                    <? foreach ($fvalue['d_val'] as $key => $value):?>
+                      <option value=<?=$key?> <?php echo ($dbdata[$fvalue['d_fname']]==$key)?'selected':'';?>><?=$value?></option>
+                    <? endforeach;?>
+                    </select>
+                  </td>
+                </tr>
             <?
                 endif;
-                //Input checkbox
+                //Input textarea
                 if($fvalue['d_type']==5):
             ?>
+                <tr>
+                  <th><?=$Star.$fvalue['d_title']?></th>
+                  <td>
+                    <textarea name="<?=$fvalue['d_fname']?>" id="<?=$fvalue['d_fname']?>"  class="contentin-table-textarea"><?php echo $dbdata[$fvalue['d_fname']]?></textarea>
+                  </td>
+                </tr>
             <?
                 endif;
-                //Input checkbox
+                //Input ckediter
                 if($fvalue['d_type']==6):
             ?>
+                <tr>
+                  <th><?=$Star.$fvalue['d_title']?></th>
+                  <td>
+                    <textarea name="<?=$fvalue['d_fname']?>" id="<?=$fvalue['d_fname']?>"  class="contentin-table-textarea"><?php echo $dbdata[$fvalue['d_fname']]?></textarea>
+                  </td>
+                </tr>
             <?
                 endif;
-                //Input checkbox
+                //Input view
                 if($fvalue['d_type']==7):
-            ?>
+            ?>  
+                <tr>
+                  <th><?=$fvalue['d_title']?></th>
+                  <td>
+                    <img src="/<?php echo $dbdata[$fvalue['d_fname']]?>" width="10%" >
+                  </td>
+                </tr>
             <?
                 endif;
-                //Input checkbox
+                //Input file
                 if($fvalue['d_type']==8):
             ?>
+                <tr>
+                  <th><?=$fvalue['d_title']?></th>
+                  <td>
+                    <input type="file"   name="<?=$fvalue['d_fname']?>" id="<?=$fvalue['d_fname']?>"/>
+                    <input type="hidden" name="<?=$fvalue['d_fname'].'_ImgHidden'?>" value="<?php echo $dbdata[$fvalue['d_fname']]?>"/>
+                  </td>
+                </tr>
             <?
                 endif;
-                //Input checkbox
+                //Input hidden
                 if($fvalue['d_type']==9):
             ?>
+                <input type="hidden" name="<?=$fvalue['d_fname']?>" value="<?php echo $dbdata[$fvalue['d_fname']]?>">
             <?
                 endif;
-                //Input checkbox
+                //Input date
                 if($fvalue['d_type']==10):
             ?>
+                <tr>
+                  <th><?=$fvalue['d_title']?></th>
+                  <td>
+                    <input type="text" name="<?=$fvalue['d_fname']?>" id="<?=$fvalue['d_fname']?>" value="<?php echo $dbdata[$fvalue['d_fname']]?>">
+                  </td>
+                </tr>
+              
+            <?  endif;
+                //time
+                if($fvalue['d_type']==11):
+            ?>
+                <tr>
+                  <th><?=$fvalue['d_title']?></th>
+                  <td>
+                    <input type="text" name="<?=$fvalue['d_fname']?>" id="<?=$fvalue['d_fname']?>" value="<?php echo $dbdata[$fvalue['d_fname']]?>">
+                  </td>
+                </tr>
             <?  endif;
               endforeach;
             ?>
@@ -108,37 +163,25 @@
     </div>
   </div>
 </div>
-<script>
+<script type="text/javascript" src="/js/ckeditor/ckeditor.js"></script> 
+<script type="text/javascript" src="/js/myjava/ckeditor.js"></script>
 
-CKEDITOR.replace( 'content', {
-  filebrowserImageBrowseUrl : '/js/ckfinder/ckfinder.html?Type=Images',
-  width : 530,
-  height: 300,
-  resize_enabled:false,
-  enterMode: 2,
-  forcePasteAsPlainText :true,
-  allowedContent:true,
-  toolbar :
-  [
-    ['Source'],
-    ['Cut','Copy','Paste','PasteText','PasteFromWord', 'Table', 'HorizontalRule', 'NumberedList','BulletedList', '-', 'Link','Unlink', '-', 'Image'],
-    ['Bold','Italic','Underline','Strike', 'TextColor', 'BGColor', '-', 'Font','FontSize', '-', 'JustifyLeft','JustifyCenter','JustifyRight','JustifyBlock','-','Iframe'],
-  ],
-  
-});
-var opt={
-      dayNames:["星期日","星期一","星期二","星期三","星期四","星期五","星期六"],
-      dayNamesMin:["日","一","二","三","四","五","六"],
-      monthNames:["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"],
-      monthNamesShort:["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"],
-      prevText:"上月",
-      nextText:"次月",
-      weekHeader:"週",
-      showMonthAfterYear:true,
-      dateFormat:"yy-mm-dd",
-      changeMonth: true,
-      changeYear: true,
-      yearRange: "c-80:c+0",
-    };
-$("#d_reser_time").datepicker(opt);
+<script type="text/javascript" src="/js/datepicker/jquery.datetimepicker.full.min.js"></script>   
+<link type="text/css" rel="stylesheet" href="/js/datepicker/jquery.datetimepicker.css">
+<script src="/js/datepicker/usedate.js"></script>
+<script src="/js/myjava/citycategory.js"></script>
+
+<script>
+<? foreach ($fdata as $fkey => $fvalue):
+    //ckediter
+    if($fvalue['d_type']==6):
+?>     
+    CKEDITOR.replace(<?=$fvalue['d_fname']?>,config);
+<? elseif($fvalue['d_type']==10):?>
+    $("#<?=$fvalue['d_fname']?>").datetimepicker(DateOnly);
+<? elseif($fvalue['d_type']==11):?>
+    $("#<?=$fvalue['d_fname']?>").datetimepicker(Time);
+<? endif;
+
+endforeach;?>
 </script>

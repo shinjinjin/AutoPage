@@ -50,7 +50,7 @@ $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';//使用者
-$db['default']['password'] = '123456';//密碼
+$db['default']['password'] = 'netnews1!';//密碼
 $db['default']['database'] = 'newproject';//資料庫名
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';

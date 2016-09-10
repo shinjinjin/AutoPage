@@ -44,7 +44,13 @@ class CheckInput { // 處理回傳資料
 	        $error='手機格式錯誤，請重新輸入';	 
 		return $error;
 	}
-
+	//檢查字串是否輸入
+	private function _File($str,$warn){
+		$error="";
+		if($str=='')
+			$error='請上傳'.$warn;
+		return $error;
+	}
 	//檢查信箱
 	private function _CheckEmail($str,$warn){
 		if(!preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $str))

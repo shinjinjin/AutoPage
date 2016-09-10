@@ -24,7 +24,7 @@ class Useful extends MY_Model {
 			//標題名稱
 			$data['TitleName']=$MenuData['d_listname'];
 			//檔案名稱
-			$data['DBName']=$MenuData['d_head'];
+			$data['DBName']=$_SESSION['Menu']['DBName']=$MenuData['d_head'];
 			//資料庫名稱&函式名稱
 			$data['FileName']=$_SESSION['Menu']['FileName']=$MenuData['d_dbname'];
 			//該函式是否有啟動功能

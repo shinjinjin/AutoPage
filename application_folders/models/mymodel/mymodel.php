@@ -95,6 +95,8 @@ class Mymodel extends MY_Model{
 		$sql.=' order by d_sort';
 		$query = $this->db->query($sql)->result_array();
 		foreach ($query as $key => $value) {
+			$str='';
+			//2=>radio 3=>checkbox
 			if($value['d_type']==2 || $value['d_type']==3){
 				if(!empty($value['d_config'])){
 					$dbdata=$this->GetConfig($value['d_config']);
@@ -105,7 +107,19 @@ class Mymodel extends MY_Model{
 					$str=explode('@#',$value['d_val']);
 				$query[$key]['d_val']=$str;
 			}
-			
+			//4=>select
+			if($value['d_type']==4){
+				if(!empty($value['d_ctype'])){
+					$cdata=$this->select_page_form($value['d_ctype'],'','d_id,d_title',array('d_enable'=>'Y'));
+					foreach ($cdata as $dkey => $dvalue){
+						$str[$dvalue['d_id']]=$dvalue['d_title'];
+					}				
+				}else
+					$str=explode('@#',$value['d_val']);
+
+				$query[$key]['d_val']=$str;
+			}
+
 		}
 		// print_r($query);
 		// break;

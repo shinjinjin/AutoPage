@@ -49,10 +49,23 @@
               <td><?=$this->useful->ChkOC($val['d_enable'])?></td>
            	<?endif;?>
             <?foreach ($fdata as $fvalue):
-                if($fvalue['d_type']==2):
+                //2=>Radio 4=>select
+                if($fvalue['d_type']==2||$fvalue['d_type']==4):
             ?>
               <td><?=$fvalue['d_val'][$val[$fvalue['d_fname']]];?></td>
-            <?  else:?>
+            <?   //3=>CheckBox 
+              elseif($fvalue['d_type']==3): 
+                $dstr=explode('@#',$val[$fvalue['d_fname']]);
+                foreach ($dstr as $dkey => $dvalue) {
+                  $sarray[]=$fvalue['d_val'][$dvalue];
+                }
+                $Str=implode(',',$sarray);
+            ?>
+              <td><?=$Str;?></td>
+            <?   //7=>view 
+              elseif($fvalue['d_type']==7): ?>
+              <td><img src="/<?=$val[$fvalue['d_fname']]?>" width="10%" ></td>
+            <?else:?>
               <td><?=$val[$fvalue['d_fname']];?></td>
               <?  endif;?>
             <? endforeach;?>
