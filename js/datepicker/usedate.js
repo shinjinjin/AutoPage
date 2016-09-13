@@ -1,3 +1,4 @@
+$.datetimepicker.setLocale('zh-TW');
 var Datetime={
      //以下為日期選擇器部分
 	// dayNames:["星期日","星期一","星期二","星期三","星期四","星期五","星期六"],
@@ -30,6 +31,4 @@ var Time={
 var DateOnly={
   timepicker:false,
   format:'Y-m-d',
-  language: 'ch',
-
 };

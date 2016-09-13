@@ -3,10 +3,9 @@ function check_all(obj,cName)
     var checkboxs = document.getElementsByName(cName); 
     for(var i=0;i<checkboxs.length;i++){checkboxs[i].checked = obj.checked;} 
 } 
-//全選函式
 function allcheck(){
   var str=''; 
-  var DB=$('head').attr("id");    //資料庫
+  var DB=$('#jsdbname').val();    //資料庫
   var Field='d_id'; //欄位名稱
   var show=$('#show_num').val();
   if(show=='no'){

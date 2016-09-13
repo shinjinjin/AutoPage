@@ -141,8 +141,32 @@
                   </td>
                 </tr>
             <?  endif;
-              endforeach;
+                if($fvalue['d_type']==12):
             ?>
+                <tr>
+                  <th><?=$fvalue['d_title']?></th>
+                  <td>
+                    <input type="text" name="<?=$fvalue['d_fname']?>" id="<?=$fvalue['d_fname']?>" value="<?php echo $dbdata[$fvalue['d_fname']]?>">
+                  </td>
+                </tr>
+            <?  endif;
+                //address
+                if($fvalue['d_type']==13):
+            ?>
+                <tr>
+                  <th><?=$fvalue['d_title']?></th>
+                  <td>
+                  <select name="<?=$fvalue['d_fname'][0]?>" rel="<?=$fvalue['d_fname'][0]?>" onchange="SelectCity(this,'<?=$fvalue['d_fname'][1]?>')">
+                  <option value="0">請選擇</option>
+                  <? foreach ($fvalue['CityConfig'] as $key => $value):?>
+                    <option value="<?=$value['d_id']?>" <?=($dbdata[$fvalue['d_fname'][0]]==$value['d_id'])?'selected':'';?>><?=$value['d_name']?></option>
+                  <? endforeach;?>
+                </select>
+                <select name="<?=$fvalue['d_fname'][1]?>" id="<?=$fvalue['d_fname'][1]?>"></select>
+                <input type="text" name="<?=$fvalue['d_fname'][2]?>"  value="<?php echo $dbdata[$fvalue['d_fname'][2]]?>" class="contentin-table-tdtextfield">
+                  </td>
+                </tr>
+            <?endif;endforeach;?>
           	<tr>
               <th>狀態</th>
               <td>
@@ -166,7 +190,7 @@
 <script type="text/javascript" src="/js/ckeditor/ckeditor.js"></script> 
 <script type="text/javascript" src="/js/myjava/ckeditor.js"></script>
 
-<script type="text/javascript" src="/js/datepicker/jquery.datetimepicker.full.min.js"></script>   
+<script type="text/javascript" src="/js/datepicker/jquery.datetimepicker.full.js"></script>   
 <link type="text/css" rel="stylesheet" href="/js/datepicker/jquery.datetimepicker.css">
 <script src="/js/datepicker/usedate.js"></script>
 <script src="/js/myjava/citycategory.js"></script>
@@ -174,14 +198,17 @@
 <script>
 <? foreach ($fdata as $fkey => $fvalue):
     //ckediter
-    if($fvalue['d_type']==6):
+  if($fvalue['d_type']==6):
 ?>     
-    CKEDITOR.replace(<?=$fvalue['d_fname']?>,config);
+  CKEDITOR.replace(<?=$fvalue['d_fname']?>,config);
 <? elseif($fvalue['d_type']==10):?>
-    $("#<?=$fvalue['d_fname']?>").datetimepicker(DateOnly);
+  $("#<?=$fvalue['d_fname']?>").datetimepicker(DateOnly);
 <? elseif($fvalue['d_type']==11):?>
-    $("#<?=$fvalue['d_fname']?>").datetimepicker(Time);
+  $("#<?=$fvalue['d_fname']?>").datetimepicker(Time);
+<? elseif($fvalue['d_type']==12):?>
+  $("#<?=$fvalue['d_fname']?>").datetimepicker();
+<? elseif($fvalue['d_type']==13 and !empty($dbdata[$fvalue['d_fname'][0]])):?>
+  DefaultCity(<?=$dbdata[$fvalue['d_fname'][0]]?>,<?=$dbdata[$fvalue['d_fname'][1]]?>,"<?=$fvalue['d_fname'][1]?>");
 <? endif;
-
 endforeach;?>
 </script>

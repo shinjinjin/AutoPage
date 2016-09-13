@@ -5,6 +5,7 @@ class Page extends MY_Controller {
 
 	private $m_pagesize=20;	//每頁筆數
 	private $mysql;
+	private $total;
 	private $MaxNum=5;  	//顯示頁數
 	private $CenterNum=3;	//中間第幾位
 	public function __construct(){
@@ -21,8 +22,13 @@ class Page extends MY_Controller {
 	{
 		$this->m_mysql=$mysql;
 	}
+	//若有值 為特殊處理資料-資料總數
+	function SetTotal($total)
+	{
+		$this->m_total=$total;
+	}
 	// 分頁設置
-	function PageStar($sql,$ToPage="",$Cond="",$WhereType){
+	function PageStar($sql,$ToPage="",$Cond="",$Like='',$WhereType){
 
 		$PageBox=array();
 		if($ToPage==""){
@@ -31,7 +37,7 @@ class Page extends MY_Controller {
 		if($ToPage==""){
 			$ToPage=(integer)comment::SetValue("ToPage");
 		}
-		
+
 		//目前頁數
 		if(empty($ToPage)){
 			$PageBox["CurrectPage"]=1;
@@ -49,23 +55,39 @@ class Page extends MY_Controller {
 				$PageBox["CurrectPage"]=1;
 			}
 		}
-		$command="SELECT count(*) as num FROM ".$sql."";
-		if($Cond!=''){
-    		$command.=" where 1=1 ";
+		$command="SELECT count(*) as num FROM ".$sql." ";
+		
+		// 進階搜尋
+		if(!empty($Cond)){
     		foreach ($Cond as $key => $value) {
-    			$command.=$WhereType.' '.$key.'="'.$value.'"';
+    			if(!empty($value)){
+    				$where_type=($num==0)?'where':$where_type;
+    				$command.=$WhereType.' '.$key.'="'.$value.'"';
+    				$num++;
+    			}
     		}
     	}
-		// echo "alert(\"".$command."\");";
+
+		// 進階相似搜尋
+    	if(!empty($Like)){
+    		foreach ($Like as $key => $value) {
+    			if(!empty($value)):
+	    			$where_type=($num==0)?'where':$where_type;
+	    			$command.=$where_type.' '.$key.' like "%'.$value.'%"';
+	    			$num++;
+    			endif;
+    		}
+
+    	}
+
 		$result=$this->m_mysql->query($command);
 		
 		$total_num=0;
 		foreach ($result->result_array() as $record){
 			$total_num=$record["num"];
 		}
-		
-		if(!empty($STotal)){
-			$total_num=$STotal;
+		if(empty($Cond) and !empty($this->m_total)){
+			$total_num=$this->m_total;
 		}
 
 		//總筆數

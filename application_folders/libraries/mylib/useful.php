@@ -28,9 +28,10 @@ class Useful extends MY_Model {
 			//資料庫名稱&函式名稱
 			$data['FileName']=$_SESSION['Menu']['FileName']=$MenuData['d_dbname'];
 			//該函式是否有啟動功能
-			$data['IsEnable']=$MenuData['is_enable'];
+			$data['IsEnable']=$MenuData['d_oc'];
 		}
 		
+
 		//新增或修改
 		if(!empty($_POST['d_id'])){
 			$data['submit']='修改';
@@ -44,12 +45,15 @@ class Useful extends MY_Model {
 	}
 
 	//分頁專用
-	public function SetPage($sql,$Topage,$pagsize='20',$STotal=''){
+	public function SetPage($sql,$Topage,$pagsize='20',$cond='',$Like='',$WhereType='and',$total=''){
 		$this->load->library('/mylib/page');
 		$page=new page();
 		$page->SetPagSize($pagsize);
 		$page->SetMySQL($this->db);
-		$qpage=$page->PageStar($sql,$Topage,'',$STotal);
+		if(empty($cond) or !empty($total)){
+			$page->SetTotal($total);
+		}
+		$qpage=$page->PageStar($sql,$Topage,$cond,$Like,$WhereType);
 		return $qpage;
 	}
 

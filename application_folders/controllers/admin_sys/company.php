@@ -1,5 +1,5 @@
 <?php
-class Daymore extends MY_Controller {
+class Company extends MY_Controller {
 	
 	public function __construct()
 	{
@@ -16,46 +16,8 @@ class Daymore extends MY_Controller {
 		$this->load->library('mylib/comment');
 	}
 
-	//文章分類列表
-	public function article_type(){
-		//頭尾、基本設定
-		$this->useful->backconfig();
-
-		//自動頁面欄位
-		$fdata=$this->mymodel->GetAutoPage($_SESSION['Menu']['menuid'],'list');
-		$data['fdata']=$fdata;
-
-		//分頁程式 start
-		$data['ToPage']=$Topage=!empty($_POST['ToPage'])?$_POST['ToPage']:1;
-		if($_POST['Searching']=='Y'){
-			foreach ($fdata as $key => $value){
-				if($value['d_search']=='Y'){
-					$Sdata[$value['d_fname']]=$_POST['s_'.$value['d_fname']];
-				}
-			}
-			$qpage=$this->useful->SetPage($_SESSION['Menu']['FileName'],'','10','',$Sdata);
-		}else
-			$qpage=$this->useful->SetPage($_SESSION['Menu']['FileName'],'','10');
-		
-		$data['page']=$this->useful->get_page($qpage);
-		//分頁程式 end
-		
-		//撈取資料
-		if($_POST['Searching']=='Y'){
-			foreach ($fdata as $key => $value){
-				if($value['d_search']=='Y'){
-					$Sdata[$value['d_fname']]=$_POST['s_'.$value['d_fname']];
-				}
-			}
-			$dbdata=$this->mymodel->select_page_form($_SESSION['Menu']['FileName'],$qpage['result'],'*',$Sdata);
-		}else
-			$dbdata=$this->mymodel->select_page_form($_SESSION['Menu']['FileName'],$qpage['result']);
-		$data['dbdata']=$dbdata;
-
-		$this->load->view('admin_sys/autopage/auto_list',$data);
-	}
 	//文章分類
-	public function article_type_info(){
+	public function config(){
 		//頭尾、基本設定
 		$this->useful->backconfig();
 
@@ -70,44 +32,7 @@ class Daymore extends MY_Controller {
 
 		$this->load->view('admin_sys/autopage/auto_info',$data);
 	}
-	//文章列表
-	public function article(){
-		//頭尾、基本設定
-		$this->useful->backconfig();
-
-		//自動頁面欄位
-		$fdata=$this->mymodel->GetAutoPage($_SESSION['Menu']['menuid'],'list');
-		$data['fdata']=$fdata;
-
-		//分頁程式 start
-		$data['ToPage']=$Topage=!empty($_POST['ToPage'])?$_POST['ToPage']:1;
-		$qpage=$this->useful->SetPage($_SESSION['Menu']['FileName'],'','10');
-		$data['page']=$this->useful->get_page($qpage);
-		//分頁程式 end
-
-		//撈取資料
-		$dbdata=$this->mymodel->select_page_form($_SESSION['Menu']['FileName'],$qpage['result']);
-		$data['dbdata']=$dbdata;
-
-		$this->load->view('admin_sys/autopage/auto_list',$data);
-	}
-	//文章內文
-	public function article_info(){
-		//頭尾、基本設定
-		$this->useful->backconfig();
-
-		//自動頁面欄位
-		$fdata=$this->mymodel->GetAutoPage($_SESSION['Menu']['menuid']);
-		$data['fdata']=$fdata;
-		//撈取資料
-		if(!empty($_POST['d_id'])){
-			$dbdata=$this->mymodel->OneSearchSql($_SESSION['Menu']['FileName'],'*',array('d_id'=>$_POST['d_id']));
-			$data['dbdata']=$dbdata;		
-		}
-
-		$this->load->view('admin_sys/autopage/auto_info',$data);
-	}
-
+	
 	//資料增修刪
 	public function data_AED(){
 		@session_start();

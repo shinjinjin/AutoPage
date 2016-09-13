@@ -1,4 +1,4 @@
-  <div class="content-all">
+<div class="content-all">
     <div class="content-title" >
       <div class="content-ti-title"><?=$TitleName?>列表</div>
       <div class="content-ti-menu">
@@ -9,23 +9,6 @@
     </div>
     <div class="clear"></div>
     <?=form_open($form,array('enctype'=>"multipart/form-data","id"=>"search_form"));?>
-    <div class="search">
-      <? foreach ($fdata as $fvalue):
-          if($fvalue['d_search']=='Y'):
-            if($fvalue['d_type']=='1'):
-      ?>    
-            <div class="search-one">
-            <div class="search-title"><?=$fvalue['d_title']?></div>
-              <input name="s_<?=$fvalue['d_fname']?>" type="text" class="search-input" value="<?=$name?>">
-                <input type="submit" value="搜尋" style=" font-size:14px;">
-            </div>
-            <?endif;?>
-      <? endif;endforeach;?>
-      <!-- <input name="menuid" value="<?=$_SESSION['Menu']['menuid']?>" type="hidden"> -->
-      <input name="Searching" value="Y" type="hidden">
-    </div>
-
-    </form>
     <? if($IsEnable=='Y'):?>
       <div class="search">
       	<div style="float:right">
@@ -34,7 +17,6 @@
             <option value="Y">批次上架</option>
             <option value="N">批次下架</option>            
           </select>
-          <input type="hidden" id="jsdbname" value="<?=$_SESSION['Menu']['FileName']?>">
           <input type="button" value="修改" style=" font-size:14px;"  onclick="allcheck()"/>
       	</div>
       </div>
@@ -95,11 +77,10 @@
           </tbody> 
         </table>
         <input type="hidden" name="ToPage" id="ToPage" value="<?=$ToPage?>">
+		</form>
         <div class="product-pageall"><?=$page?></div>
         
       </div>
       <div style=" background-color:#F00;"></div>
     </div>
   </div>
-</div>
-<script src='/js/myjava/allcheck.js'></script>

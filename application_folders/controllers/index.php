@@ -7,10 +7,8 @@ class Index extends MY_Controller
 		$this->load->library('session');
 		$this -> load -> helper('url');
 		$this -> load -> helper('form');
-		$this->load->model('daymore_model',dmodel);
-		$this->load->model('index_model',imodel);
-		$this->load->model($this->admin_path.'survey_model',smodel);
-		$this -> load -> model($this -> admin_path.'login_model');
+
+		$this->load->model('MyModel/mymodel');
 	}
 	public function index(){
 		$data['banner_data']=$this->dmodel->get_filed_data('banner');	
@@ -165,9 +163,16 @@ class Index extends MY_Controller
 		$id_val=explode(';',$id);
 
 		foreach ($id_val as $value) {
-			$this->dmodel->update_set($DB,$field,$value,array('d_is_open'=>$oc));
+			$this->mymodel->update_set($DB,$field,$value,array('d_enable'=>$oc));
 		}
 		echo '修改成功';
 	}
 	//--AJAX 開啟關閉資料專用
+	//地區切換
+	public function selectcity(){
+		$cid=$_POST['cid'];
+		$dbdata=$this->mymodel->GetCity($cid);
+		echo json_encode($dbdata);
+	}
+	//地區切換
 }

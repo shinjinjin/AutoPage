@@ -55,23 +55,26 @@ class Mymodel extends MY_Model{
 		return $query->result_array();
 	}
 	// 抓取地區資料(台灣)
-	public function get_area_data($s_city_id='0'){
-		$sql="SELECT s_id,s_name FROM city_category where ";
-		$sql.=" s_city_id=".$s_city_id;
+	public function GetCity($d_city_id='0'){
+		$sql="SELECT d_id,d_name FROM city_category where ";
+		$sql.=" d_city_id=".$d_city_id;
 
 		$query = $this->db->query($sql);
 		return $query->result_array();
 	}
 
 	//權限抓取
-	public function get_jur($s_id=''){
-	    $sql="select d_id,d_code,d_menuname,d_head,d_dbname from d_menu";
+	public function get_jur($s_id='',$is_enable=''){
+	    $sql="select * from d_menu";
 	    if($s_id!='')
 	      $sql.=" where d_p_id=".$s_id;
 	    else
 	      $sql.=" where d_p_id=0";
 
-	    $sql.=' and is_del="N" order by d_sort';
+	  	if(empty($is_enable))
+	    	$sql.=' and d_enable="Y" ';
+
+	    $sql.=' order by d_sort';
 	    $query=$this->db->query($sql);
 	    return $query->result_array();
 	}
@@ -119,6 +122,13 @@ class Mymodel extends MY_Model{
 
 				$query[$key]['d_val']=$str;
 			}
+			//13=>address
+			if($value['d_type']==13){
+				$str=explode('@#',$value['d_fname']);
+				$city=$this->GetCity();
+				$query[$key]['CityConfig']=$city;
+				$query[$key]['d_fname']=$str;
+			}
 
 		}
 		// print_r($query);
@@ -128,7 +138,7 @@ class Mymodel extends MY_Model{
 
 	//自動頁面標題
 	public function GetMenuData($menu_id){		
-		$msql='select d_menuname,d_listname,d_head,d_dbname,is_enable from d_menu where d_id='.$menu_id;
+		$msql='select d_menuname,d_listname,d_head,d_dbname,d_enable,d_oc from d_menu where d_id='.$menu_id;
 		$mquery = $this->db->query($msql)->row_array();
 		return $mquery;
 	}
