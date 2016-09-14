@@ -132,14 +132,12 @@ class Useful extends MY_Model {
 
 	// 文字編輯器
 	public function CKediter($push_path){
+
 		// ckeditor 文字編輯器
-		$this -> create_dir($push_path.'ckfinder_image/');
+		$this -> create_dir('./uploads/'.$push_path.'/ckfinder_image/');
 		$this -> start_session(3600);
-		$_SESSION['member_id']     = '1';
-		$_SESSION['IsAuthorized']  = true;
-		$_SESSION['ckeditor_url']  = str_replace(".", "", $push_path).'ckfinder_image';
+		$_SESSION['ckeditor_url']='/uploads/'.str_replace(".", "", $push_path).'/ckfinder_image';
 		session_write_close();
-		
 		// ckeditor 文字編輯器
 	}
 

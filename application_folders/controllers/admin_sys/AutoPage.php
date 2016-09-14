@@ -47,13 +47,10 @@ class Autopage extends MY_Controller {
 
 		$data['dbdata']=$this->mymodel->select_page_form('auto_page','','*',array('d_menu_id'=>$d_menu_id));
 
-
-		
-
 		//類型
-		$data['cdata']=$this->mymodel->GetConfig('autotype');
+		$data['cdata']=$this->mymodel->BaseConfig('autotype');
 		//檢查方式
-		$data['sdata']=$this->mymodel->GetConfig('searchtype');
+		$data['sdata']=$this->mymodel->BaseConfig('searchtype');
 
 		$this->load->view('admin_sys/autopage/config',$data);
 	}

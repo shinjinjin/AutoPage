@@ -47,7 +47,7 @@ class Daymore extends MY_Controller {
 					$Sdata[$value['d_fname']]=$_POST['s_'.$value['d_fname']];
 				}
 			}
-			$dbdata=$this->mymodel->select_page_form($_SESSION['Menu']['FileName'],$qpage['result'],'*',$Sdata);
+			$dbdata=$this->mymodel->SelectLikeSql($_SESSION['Menu']['FileName'],$qpage['result'],'*',$Sdata);
 		}else
 			$dbdata=$this->mymodel->select_page_form($_SESSION['Menu']['FileName'],$qpage['result']);
 		$data['dbdata']=$dbdata;

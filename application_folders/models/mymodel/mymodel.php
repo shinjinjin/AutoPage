@@ -42,6 +42,26 @@ class Mymodel extends MY_Model{
 		return $query->row_array();
     }
 
+     //搜尋專用 相似資料抓取
+    public function SelectLikeSql($table="",$page="",$filed="*",$set='',$where_type='and'){
+    	$sql=" select ".$filed." from ".$table." ";
+    	$num=0;
+    	if($set!=''){
+    		foreach ($set as $key => $value) {
+    			if(!empty($value)):
+	    			$where_type=($num==0)?'where':$where_type;
+	    			$sql.=$where_type.' '.$key.' like "%'.$value.'%"';
+	    			$num++;
+    			endif;
+    		}
+    	}
+
+    	$sql.=$page;
+
+    	$query = $this->db->query($sql);
+		return $query->result_array();
+    }
+    
 	//抓取系統資料
 	public function GetConfig($Type='',$Cid=''){
 		$sql='select d_id,d_title,d_val,d_type from d_config';
